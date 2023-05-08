@@ -1,0 +1,4 @@
+{
+    "name" : "simple",
+    "bin" : "./mayor/mayor_server.js"
+}
