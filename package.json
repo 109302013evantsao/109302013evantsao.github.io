@@ -1,4 +1,7 @@
 {
     "name" : "simple",
-    "main" : "mayor_server.js"
+    "main" : "mayor_server.js",
+    "dependencies": {
+        "express": "^4.17.1"
+      }
 }
