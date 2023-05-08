@@ -54,7 +54,7 @@
             }
 
             // run the function and receive a Promise
-            const promise = load('http://localhost:3000/region_data')
+            const promise = load('http://134.209.77.233/region_data')
 
             // let the Promise know what you want to do when it resolves
             // promise.then(console.log)
@@ -74,7 +74,7 @@
                 var logButtonIndex = function(buttonIndex){
                     const data = { name:`${candidates_list[buttonIndex].name}` , votes: candidates_list[buttonIndex].votes+1 };
 
-                    fetch('http://localhost:3000/post_data',{
+                    fetch('134.209.77.233/post_data',{
                         method:'POST',
                         headers: {
                             'Content-Type': 'application/json'
