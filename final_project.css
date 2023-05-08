@@ -1,0 +1,39 @@
+:root {
+    --color-gold: #B99362;
+    font-family: 'Noto Sans Traditional Chinese';
+}
+
+body {
+    background-color: #222;
+}
+
+svg {
+    position: relative;
+    height: 100vh;
+}
+
+path {
+    stroke: white;
+    fill: transparent;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+path:hover {
+    fill: var(--color-gold);
+    transform: translate(-8px, -8px);
+}
+
+.title_area{
+    position: absolute;
+    right: 20px;
+    top:20px;
+    color: white;
+    font-size: 30px;
+}
+
+.forcast{
+    position: absolute;
+    right: 20px;
+    top: 100px;
+}
