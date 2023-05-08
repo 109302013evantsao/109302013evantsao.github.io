@@ -1,4 +1,4 @@
 {
     "name" : "simple",
-    "main" : "mayor_server.js"
+    "main" : "/mayor/mayor_server.js"
 }
