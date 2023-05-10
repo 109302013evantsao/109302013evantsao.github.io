@@ -74,7 +74,7 @@
                 var logButtonIndex = function(buttonIndex){
                     const data = { name:`${candidates_list[buttonIndex].name}` , votes: candidates_list[buttonIndex].votes+1 };
 
-                    fetch('http://134.209.77.233/post_data',{
+                    fetch('https://134.209.77.233/post_data',{
                         method:'POST',
                         headers: {
                             'Content-Type': 'application/json'
