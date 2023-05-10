@@ -93,6 +93,7 @@
                 button_id_list.forEach(function(button,index){
                     button.addEventListener('click',function(){
                         logButtonIndex(index);
+                        location.reload(true);
                     });
                 });
             });
