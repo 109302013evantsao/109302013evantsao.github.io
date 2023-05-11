@@ -28,15 +28,37 @@
         <div class="title_place">
             <h1>桃園市市長投票</h1>
         </div>
-        <iframe src=https://bulletin.cec.gov.tw/01選舉公報/03直轄市長/111年/桃園市市長.pdf#view=fitH height="100%" width="100%"></iframe>
+        <!-- <iframe src=https://bulletin.cec.gov.tw/01選舉公報/03直轄市長/111年/桃園市市長.pdf#view=fitH height="100%" width="100%"></iframe> -->
+        
+        <canvas id="pdf-canvas"></canvas>
+        
         <div id="data-container"></div>
         
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 
         <script>
             
+            // Load PDF document
+            const url = 'https://bulletin.cec.gov.tw/01選舉公報/03直轄市長/111年/桃園市市長.pdf#view=fitH';
+            const loadingTask = pdfjsLib.getDocument(url);
+            loadingTask.promise.then(function(pdf) {
+            // Load first page
+                pdf.getPage(1).then(function(page) {
+                    const canvas = document.getElementById('pdf-canvas');
+                    const context = canvas.getContext('2d');
+                    const viewport = page.getViewport({scale: 0.9});
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    page.render({canvasContext: context, viewport: viewport});
+                });
+            });
+
+
             // https://dev.to/ramonak/javascript-how-to-access-the-return-value-of-a-promise-object-1bck
 
             var candidates_list = []
