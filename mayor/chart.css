@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #6FDEFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+
+.chart{
+    padding: 2rem;
+    border: 3px solid #EAEAEA;
+    border-radius: 1.5rem;
+    background: #EAEAEA;
+    box-shadow: 0 0  16px rgba(0,0,0,0.6);
+}
+
+#bar_chart,#doughnut_chart{
+    width: 100%;
+    height: 100vh;
+}
+
+/* 針對螢幕寬度大於600px但小於1200px的設定 */
+@media screen and (max-width: 1200px) {
+    .container {
+        /* flex-direction: row; */
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+}

@@ -30,7 +30,8 @@
         </div>
         <iframe src=./pdf_file/嘉義市市長重行選舉.pdf#view=fitH height="100%" width="100%"></iframe>
         <div id="data-container"></div>
-        
+        <div id="link"></div>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
@@ -95,6 +96,10 @@
                 });
             });
             
+            var city= "嘉義市";
+            document.getElementById("link").innerHTML = "<input type=\"button\" value=\"查看投票結果\" onclick=\"window.location.href='./statics.html?variable="+city+"'\""+">";
+
+
         </script>  
 
 

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="chart.css">
+    <title>chaxrt</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="chart">
+
+            <canvas id = "bar_chart"></canvas>
+
+        </div>
+        <div class="chart">
+
+            <canvas id = "doughnut_chart"></canvas>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var Variable = urlParams.get('variable');
+
+        // alert(Variable);
+
+        var candidates_list = []
+            function load (url) {
+            return new Promise(async function (resolve, reject) {
+                // do async thing
+                const res = await fetch(url)
+
+                // resolve
+                resolve(res.json()) // see note below!
+            })
+            }
+
+            // run the function and receive a Promise
+            const promise = load('https://134.209.77.233/region_data')
+
+            // let the Promise know what you want to do when it resolves
+            // promise.then(console.log)
+            
+            promise.then(result =>{
+                candidates_list = result.filter(i => i.name === Variable)[0].candidates
+                console.log(result.filter(i => i.name === Variable)[0].candidates)
+            
+            
+                const barchart = document.getElementById('bar_chart');
+                const doughnut = document.getElementById('doughnut_chart');
+
+                var candidates_for_chart = [];
+                var candidates_votes_for_chart = [];
+                
+                for(var i=0 ; i < candidates_list.length ; i++){
+                    candidates_for_chart.push(candidates_list[i].name);
+                    candidates_votes_for_chart.push(candidates_list[i].votes)
+                };
+                
+                // 隨機顏色
+                function random_color(transparency){
+                    var r = Math.floor(Math.random()*256);
+                    var g = Math.floor(Math.random()*256);
+                    var b = Math.floor(Math.random()*256);
+
+                    var rgba = 'rgba('+ r + ',' + g + ',' + b + ',' + transparency +')';
+                    return rgba;
+                }
+
+                var color_list_for_bar = [];
+                var color_list_for_pie = [];
+                for(var i=0 ; i < candidates_list.length ; i++ ){
+                    var color_list_for_bar = color_list_for_bar.concat(random_color(0.4));
+                    var color_list_for_pie = color_list_for_pie.concat(random_color(0.6));
+                }
+
+                new Chart(barchart, {
+                    type: 'bar',
+                    data: {
+                        labels: candidates_for_chart,
+                        datasets: [{
+                            label: '得票數',
+                            data: candidates_votes_for_chart,
+                            backgroundColor:color_list_for_bar,
+                            borderWidth: 1,
+                            borderColor:'rgb(255,255,255)'                            
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                new Chart(doughnut,{
+                    type: 'doughnut',
+                    data:{
+                        labels: candidates_for_chart,
+                        datasets:[{
+                            label:'得票數',
+                            data:candidates_votes_for_chart,
+                            borderWidth: 1,
+                            backgroundColor:color_list_for_pie
+                        }]
+                    }
+                })
+        
+        
+        
+        
+            });;
+
+
+    </script>
+</body>
+</html>
