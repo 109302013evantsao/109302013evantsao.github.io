@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="mayor.css">
-        <title>臺南市</title>
+        <title>台南市</title>
         <style>
 
             #data-container{
@@ -26,9 +26,9 @@
     </head>
     <body>
         <div class="title_place">
-            <h1>臺南市市長投票</h1>
+            <h1>台南市市長投票</h1>
         </div>
-        <iframe src=https://bulletin.cec.gov.tw/01選舉公報/03直轄市長/111年/臺南市市長.pdf#view=fitH height="100%" width="100%"></iframe>
+        <iframe src=./pdf_file/台南市市長.pdf#view=fitH height="100%" width="100%"></iframe>
         <div id="data-container"></div>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
@@ -57,8 +57,8 @@
             // promise.then(console.log)
             
             promise.then(result =>{
-                candidates_list = result.filter(i => i.name === '臺南市')[0].candidates
-                console.log(result.filter(i => i.name === '臺南市')[0].candidates)
+                candidates_list = result.filter(i => i.name === '台南市')[0].candidates
+                console.log(result.filter(i => i.name === '台南市')[0].candidates)
                 
                 
                 for(var i=0 ; i < candidates_list.length ; i++){
