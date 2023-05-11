@@ -7,6 +7,13 @@ iframe{
     margin: auto;
     display: block;
 }
+
+#pdf-canvas{
+    width: 90%;
+    margin: auto;
+    display: block;
+}
+
 .title_place{
     color: white;
     text-align: center;
