@@ -58,8 +58,8 @@
             // promise.then(console.log)
             
             promise.then(result =>{
-                candidates_list = result.filter(i => i.name === '台南市')[0].candidates
-                console.log(result.filter(i => i.name === '台南市')[0].candidates)
+                candidates_list = result.filter(i => i.name === '臺南市')[0].candidates
+                console.log(result.filter(i => i.name === '臺南市')[0].candidates)
                 
                 
                 for(var i=0 ; i < candidates_list.length ; i++){
@@ -95,7 +95,7 @@
                 });
             });
             
-            var city= "台南市";
+            var city= "臺南市";
             document.getElementById("link").innerHTML = "<input type=\"button\" value=\"查看投票結果\" onclick=\"window.location.href='./statics.html?variable="+city+"'\""+">";
 
 
