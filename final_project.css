@@ -1,6 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 :root {
     --color-gold: #B99362;
-    font-family: 'Noto Sans Traditional Chinese';
+    /* font-family: 'Noto Sans Traditional Chinese'; */
+    font-family: DFKai-sb;
 }
 
 body {
@@ -8,8 +15,11 @@ body {
 }
 
 svg {
-    position: relative;
-    height: 100vh;
+    width: 100%;
+    height: calc(100vh - 90px);
+    display: block;
+    /* height: 100vh; */
+    margin: auto;
 }
 
 path {
@@ -25,15 +35,137 @@ path:hover {
 }
 
 .title_area{
-    position: absolute;
-    right: 20px;
-    top:20px;
+    display: block;
+    height: 60px;
+    background-color: #ccc;
+    position: relative;
+    animation: ani 6s infinite alternate;
+}
+
+.header{
+    font-size: 40px;
+    /* text-align: center; */
+    line-height: 60px;
+    margin-left: 10px;
     color: white;
-    font-size: 30px;
 }
 
 .forcast{
+    font-size: 25px;
+    line-height: 50px;
+    margin-left: 15px;
+    color: white;
+}
+
+#menu_control{
     position: absolute;
-    right: 20px;
-    top: 100px;
+    opacity: 0;
+    /* 檢測選單被叫出 */
+    /* z-index: 2; */
+}
+
+.menu{
+    width: 50px;
+    height: 50px;
+    background-color: #282923;
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.menu span{
+    opacity: 0;
+    overflow: hidden;
+}
+
+.menu::before{
+    content: '';
+    position: absolute;
+    height: 4px;
+    left: 2px;
+    width: 46px;            
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #aaa;
+    box-shadow: 0px 12px 0px #aaa,
+                0px -12px 0px #aaa;
+}
+
+nav{
+    width: 70%;
+    height: calc(100vh - 60px );
+    /* height: 100vh; */
+    background-color: #282923;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    transition: 0.5s;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: #aaa;
+    padding: 20px 20px;
+    border-bottom: 1px solid #aaa;
+    font-size: 20px;
+}
+
+#menu_control:checked ~ .title_area nav{
+    left: 0;
+}
+
+@keyframes ani{
+    0%{background-color: #29c7c6;}
+    50%{background-color: #17335f;}
+    100%{background-color: #0b9933;}
+}
+
+figure{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+figure img{
+    max-width: 70%;
+    height: auto;
+    float: right;
+}
+
+@media screen and (min-width:768px){
+    .menu{ display: none;}
+    .title_area{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav{
+        position: relative;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+    }
+    nav a{
+        border-bottom: none;
+        color: white;
+    }
+}
+
+/* 選單製作 */
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    /* #app{
+        display: flex;
+    } */
 }
