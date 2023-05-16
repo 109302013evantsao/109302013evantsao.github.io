@@ -1972,6 +1972,8 @@
             // 滑鼠碰到 區塊浮動
             $("path").mouseenter(function(e){
                 var tagname = $(this).attr('id');
+
+                vm.filter = tagname;
             });
 
         });
