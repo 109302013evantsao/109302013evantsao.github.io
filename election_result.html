@@ -4,26 +4,210 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./final_project.css">
-    <title>Document</title>
+    <title>選舉結果</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        :root {
+            --color-gold: #B99362;
+            /* font-family: 'Noto Sans Traditional Chinese'; */
+            font-family: DFKai-sb;
+        }
+
+        body {
+            background-color: #222;
+        }
+        .party{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            display: block;
+            width: 110px;
+            height: 10  0px;
+            border: solid #ccc;
+        }
+        #KMT{
+            display:inline-block;
+            width: 50px;
+            height: 30px;
+            background-color: #17335f;
+            vertical-align: middle;
+        }
+        #DPP{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            background-color: #0b9933;
+            vertical-align: middle;
+        }
+        #TPP{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            background-color: #29c7c6;
+            vertical-align: middle;
+        }
+        #other{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            background-color: rgb(84, 84, 84);
+            vertical-align: middle;
+        }
+        #party_name{
+            display: inline;
+            justify-content: center;
+            line-height: 30px;
+            vertical-align: middle;
+            font-size: 20px;
+            color: aliceblue;
+        }
+
+        svg {
+            width: 100%;
+            height: calc(100vh - 90px);
+            display: block;
+            /* height: 100vh; */
+            margin: auto;
+        }
+
+        path {
+            stroke: white;
+            fill: transparent;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .title_area{
+            display: block;
+            height: 60px;
+            background-color: #ccc;
+            position: relative;
+            animation: ani 6s infinite alternate;
+        }
+
+        .header{
+            font-size: 40px;
+            /* text-align: center; */
+            line-height: 60px;
+            margin-left: 10px;
+            color: white;
+        }
+
+        .forcast{
+            font-size: 25px;
+            line-height: 50px;
+            margin-left: 15px;
+            color: white;
+        }
+
+        #menu_control{
+            position: absolute;
+            opacity: 0;
+            /* 檢測選單被叫出 */
+            /* z-index: 2; */
+        }
+
+        .menu{
+            width: 50px;
+            height: 50px;
+            background-color: #282923;
+            display: block;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
+
+        .menu span{
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .menu::before{
+            content: '';
+            position: absolute;
+            height: 4px;
+            left: 2px;
+            width: 46px;            
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: #aaa;
+            box-shadow: 0px 12px 0px #aaa,
+                        0px -12px 0px #aaa;
+        }
+
+        nav{
+            width: 70%;
+            height: calc(100vh - 60px );
+            /* height: 100vh; */
+            background-color: #282923;
+            position: absolute;
+            top: 60px;
+            left: -100%;
+            transition: 0.5s;
+        }
+
+        nav a{
+            display: block;
+            text-decoration: none;
+            color: #aaa;
+            padding: 20px 20px;
+            border-bottom: 1px solid #aaa;
+            font-size: 20px;
+        }
+
+        #menu_control:checked ~ .title_area nav{
+            left: 0;
+        }
+
+        @keyframes ani{
+            0%{background-color: #29c7c6;}
+            50%{background-color: #17335f;}
+            100%{background-color: #0b9933;}
+        }
+
+        @media screen and (min-width:768px){
+            .menu{ display: none;}
+            .title_area{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            nav{
+                position: relative;
+                top: 0;
+                left: 0;
+                display: flex;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+            }
+            nav a{
+                border-bottom: none;
+                color: white;
+            }
+        }
+
+
+    </style>
 </head>
 <body>
-    
-    <!-- jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.3.js"></script> -->
-    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script  src="https://unpkg.com/vue@next"></script>
 
     
-    <!-- <script src="final_project.js"></script> -->
-     
+
     <div id="app">
 
         <input type="checkbox" name="" id="menu_control">
 
         <div class="title_area">
             
-            <div class="header">台灣選舉地圖</div>
+            <div class="header">選舉結果</div>
             
             <div class="forcast" v-if="now_area">{{now_area()}}</div>
 
@@ -35,17 +219,13 @@
 
             <nav>
 
-                <a href="./election_result.html">投票結果</a>
+                <a href="./index.html">首頁</a>
                 <a href="./heatmap.html">投票熱力圖</a>
                 <a href="#">工作人員名單</a>
         
             </nav>
 
         </div>
-
-        <figure>
-            <img src="./1684216325117.gif" >
-        </figure>
 
         <!-- 小偷懶 使用網路上現有的svg修改 -->
 
@@ -1578,10 +1758,26 @@
         </g>
         </svg>
         
+        <div class="party">
+
+            <div id="KMT"></div>
+            <div id="party_name">國民黨</div>
+            <div id="DPP"></div>
+            <div id="party_name">民進黨</div>
+            <div id="TPP"></div>
+            <div id="party_name">民眾黨</div>
+            <div id="other"></div>
+            <div id="party_name">其他黨</div>
+
+        </div>
     </div>
 
+    <!-- <script  src="https://unpkg.com/browse/csvtojson@2.0.10/browser/csvtojson.min.js"></script> -->
+    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script  src="https://unpkg.com/vue@next"></script>
+    
     <script>
-
+        
         var place_data=[ 
         {
             place:"連江縣",
@@ -1694,6 +1890,61 @@
             url_link:"mayor/Kinmen_County.html"
         }];
 
+        function load (url) {
+            return new Promise(async function (resolve, reject) {
+                // do async thing
+                const res = await fetch(url)
+
+                // resolve
+                resolve(res.json()) // see note below!
+            })
+        }
+
+        const promise = load('https://evanteamproject.me/region_data')
+
+        var new_json = {};
+
+        promise.then(result => {
+            for(let i=0; i<place_data.length ; i++){
+                var candi_list = result.filter(j => j.name === place_data[i]['place'])[0].candidates;
+                var max = Math.max.apply(Math,candi_list.map(function(e){
+                    return e.votes
+                }))
+                var fil = candi_list.filter(j => j.votes === max)[0]
+                new_json[i] = fil.name;
+            }
+            var keys = Object.keys(new_json)
+            fetch("./mayor/mayor_data.json")
+            .then(response => response.json())
+            .then(json => {
+                // json.filter(function(e){return e.p})
+                
+                for(let i = 0; i<keys.length;i++){
+                    win_elec = json.filter(function(e){return e.name == new_json[i]})
+                    win_elec_party = win_elec[0].political_party;
+                    win_elec_place_tag = place_data.filter(function(e){return e.place == win_elec[0].region_name})[0].tag
+                    
+                    var element = document.getElementById(win_elec_place_tag)
+                    if(win_elec_party == '中國國民黨')
+                    {
+                        element.style.fill = '#17335f'
+                    }
+                    else if(win_elec_party == '民主進步黨')
+                    {
+                        element.style.fill = '#0b9933'
+                    }
+                    else if(win_elec_party == '台灣民眾黨')
+                    {
+                        element.style.fill = '#29c7c6'
+                    }
+                    else
+                    {
+                        element.style.fill = 'rgb(84, 84, 84)'
+                    }
+                }
+            })
+        })
+
         const vm = Vue.createApp({
             data:function(){
                 return{
@@ -1725,30 +1976,8 @@
                 vm.filter = tagname;
             });
 
-
-            // 點擊跳轉頁面
-            $("path").click(function(){
-                var tagname = $(this).attr('id');
-                var result = place_data.filter(function(obj){
-                    return obj.tag == tagname;
-                });
-                if(result.length==0){
-                    return null;
-                }else{
-                    vm.click_data = result[0]['url_link'];
-
-                    // 頁面跳轉
-                    // https://ithelp.ithome.com.tw/articles/10190062
-                    window.location.assign(vm.click_data);
-                }
-            });
         });
     
     </script>
 </body>
 </html>
-
-
-<!-- 測試看看 -->
-
-<!-- https://bulletin.cec.gov.tw/01選舉公報/03直轄市長/111年/ -->
