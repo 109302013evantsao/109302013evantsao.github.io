@@ -25,3 +25,257 @@ iframe{
 .wrap{
     color: white;
 }
+#data-container{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+#data-container p{
+    margin:5px;
+}
+
+#data-container button{
+    margin: 0px 20px 0px 20px;
+}
+
+
+/* new 05_21 */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:root {
+    --color-gold: #B99362;
+    /* font-family: 'Noto Sans Traditional Chinese'; */
+    font-family: DFKai-sb;
+}
+
+body {
+    background-color: #222;
+}
+
+
+.title_area{
+    display: block;
+    height: 60px;
+    background-color: #ccc;
+    position: relative;
+    animation: ani 6s infinite alternate;
+}
+
+.header{
+    font-size: 40px;
+    /* text-align: center; */
+    line-height: 60px;
+    margin-left: 10px;
+    color: white;
+}
+
+#menu_control{
+    position: absolute;
+    opacity: 0;
+    /* 檢測選單被叫出 */
+    /* z-index: 2; */
+}
+
+.menu{
+    width: 50px;
+    height: 50px;
+    background-color: #282923;
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.menu span{
+    opacity: 0;
+    overflow: hidden;
+}
+
+.menu::before{
+    content: '';
+    position: absolute;
+    height: 4px;
+    left: 2px;
+    width: 46px;            
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #aaa;
+    box-shadow: 0px 12px 0px #aaa,
+                0px -12px 0px #aaa;
+}
+
+nav{
+    width: 70%;
+    height: calc(100vh - 60px );
+    /* height: 100vh; */
+    background-color: #282923;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    transition: 0.5s;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: #aaa;
+    padding: 20px 20px;
+    border-bottom: 1px solid #aaa;
+    font-size: 20px;
+}
+
+#menu_control:checked ~ .title_area nav{
+    left: 0;
+}
+
+@keyframes ani{
+    0%{background-color: #29c7c6;}
+    50%{background-color: #17335f;}
+    100%{background-color: #0b9933;}
+}
+
+figure{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+figure img{
+    max-width: 70%;
+    height: auto;
+    float: right;
+}
+
+@media screen and (min-width:800px){
+    .menu{ display: none;}
+    .title_area{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav{
+        position: relative;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+    }
+    nav a{
+        border-bottom: none;
+        color: white;
+    }
+}
+
+
+/* https://uiverse.io/mrhyddenn/weak-swan-50 */
+
+.vote_button {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 30px;
+    transition: 0.5s;
+    position: relative;
+    font-size: 17px;
+    background: #333;
+    border: none;
+    color: #fff;
+}
+
+.vote_button:hover {
+    letter-spacing: 0.25em;
+    background: #ff1867;
+    color: #ff1867;
+    box-shadow: 0 0 45px #ff1867;
+}
+
+.vote_button::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #222222;
+}
+
+.vote_button span {
+    font-family: DFKai-sb;
+    position: relative;
+    z-index: 1;
+}
+
+/* https://getcssscan.com/css-buttons-examples */
+
+.button-color {
+    font-size: 25px;
+    font-family: DFKai-sb;
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-color:before {
+    content: "";
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff7300,
+        #fffb00,
+        #48ff00,
+        #00ffd5,
+        #002bff,
+        #7a00ff,
+        #ff00c8,
+        #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-color 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+@keyframes glowing-button-color {
+0% {
+    background-position: 0 0;
+}
+50% {
+    background-position: 400% 0;
+}
+100% {
+    background-position: 0 0;
+}
+}
+
+.button-color:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
