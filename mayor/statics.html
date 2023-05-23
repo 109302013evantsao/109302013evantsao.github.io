@@ -8,17 +8,40 @@
     <title>chaxrt</title>
 </head>
 <body>
+    <div id="app">
 
-    <div class="container">
-        <div class="chart">
+        <input type="checkbox" name="" id="menu_control">
 
-            <canvas id = "bar_chart"></canvas>
+        <div class="title_area">
+            
+            <div class="header">投票結果</div>
 
+            <label for="menu_control" class="menu">
+
+                <span>選單</span>
+        
+            </label>
+
+            <nav>
+
+                <a href="./index.html">首頁</a>
+                <a href="./election_result.html">投票結果</a>
+                <a href="./heatmap.html">投票熱力圖</a>
+                <a href="./project_team_member.html">工作人員名單</a>
+
+            </nav>
         </div>
-        <div class="chart">
+        <div class="container">
+            <div class="chart">
 
-            <canvas id = "doughnut_chart"></canvas>
+                <canvas id = "bar_chart"></canvas>
 
+            </div>
+            <div class="chart">
+
+                <canvas id = "doughnut_chart"></canvas>
+
+            </div>
         </div>
     </div>
 
@@ -93,6 +116,8 @@
                         }]
                     },
                     options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
                         scales: {
                             y: {
                                 beginAtZero: true
@@ -111,12 +136,12 @@
                             borderWidth: 1,
                             backgroundColor:color_list_for_pie
                         }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
                     }
                 })
-        
-        
-        
-        
             });;
 
 
