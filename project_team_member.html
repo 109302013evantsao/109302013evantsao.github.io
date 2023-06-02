@@ -132,6 +132,16 @@
             padding: 10px;
         }
 
+        .card ul{
+            display: inline-block;
+            font-size: 25px;
+            padding: 10px 20px;
+            font-family: 'Microsoft JhengHei';
+        }
+
+        .card ul li{
+            width: 100%;
+        }
         @keyframes ani{
             0%{background-color: #29c7c6;}
             50%{background-color: #17335f;}
@@ -163,15 +173,21 @@
                 vertical-align: middle;
             }
 
-
             .card p{
                 display: inline-block;
                 vertical-align: middle;
                 width: calc(100% - 360px);
             }
+
+            .card ul{
+                display: inline-block;
+                vertical-align: middle;
+                box-sizing: border-box;
+                width: 400px;
+            }
         }
     </style>
-    <title>Document</title>
+    <title>工作人員介紹</title>
 </head>
 <body>
     <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -204,8 +220,20 @@
         </div>
         <div class="container">
             <div class="card" id="advisor">
-                <P1>指導老師 黃智遠 老師</P1>
-                <P></P>
+                <div class="name">
+                    <P1>指導教授 黃智遠 教授</P1>
+                </div>
+                <img src="./img/teacher.jpg">
+                <ul>
+                    <li style="font-family: DFKai-sb;">研究領域</li>
+                    <ul>
+                        <li>WebGIS</li>
+                        <li>Geospatial Cyberinfrastructure</li>
+                        <li>Internet of Things</li>
+                        <li>Digital Twins</li>
+                    </ul>
+                    <li style="font-family: DFKai-sb;"><a href="https://www.csrsr.ncu.edu.tw/about/professor_info.php?id=17#top">教授詳細資料</a></li>
+                </ul>
             </div>
             <div class="card"id="student">
                 <div class="name">
@@ -230,6 +258,11 @@
                 </div>
                 <img src="./img/109602537.jpg">
                 <P>負責資料收集、PPT製作<br><br>我原本對於資訊相關的東西知道的並不是很多 但教授上課時講的很淺顯易懂 即便是像我一樣沒相關概念的也可以學到不少 很感激教授。</P>
+            </div>
+            <div class="card" id="student">
+                <div class="name">
+                    <p><a href="mailto:tsao.evan99@gmail.com">有問題請聯絡我們 按此寄信</a></p>
+                </div>
             </div>
         </div>
     </div>
