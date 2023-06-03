@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投票熱力圖</title>
+    <title>投票人數熱力圖</title>
     <style>
         *{
             margin: 0;
@@ -170,7 +170,7 @@
         <input type="checkbox" name="" id="menu_control">
 
         <div class="title_area">
-            <div class="header">投票熱力圖</div>
+            <div class="header">投票人數熱力圖</div>
             <div class="forcast" v-if="now_area">{{now_area()}}</div>
 
             <label for="menu_control" class="menu">
@@ -1898,6 +1898,7 @@
             legend.style.flexDirection = 'row';
             legend.style.alignItems = 'center';
             legend.style.justifyContent = 'center';
+            legend.style.backgroundColor = 'gray';
             // legend.style.marginTop = '20px';
             // legend.style.marginBottom = '20px';
             
@@ -1917,26 +1918,43 @@
             legend_num.style.alignItems = 'center';
             legend_num.style.justifyContent = 'center';
             
+            const low = document.createElement('div');
+            low.style.width = '60px';
+            low.style.height = '20px';
+            low.style.margin = '5px';
+            low.style.color = 'white';
+            low.style.textAlign = 'center';
+            low.textContent = '少到多';
+            legend_color.appendChild(low);
+
+            const tag = document.createElement('div');
+            tag.style.width = '60px';
+            tag.style.height = '20px';
+            tag.style.margin = '5px';
+            tag.style.color = 'white';
+            tag.textContent = '總人數';
+            tag.style.textAlign = 'center';
+            legend_num.appendChild(tag);
 
             data.forEach(({ number, color }) => {
 
-                const swatch = document.createElement('div');
-                swatch.style.width = '20px';
-                swatch.style.height = '20px';
-                swatch.style.backgroundColor = color;
-                swatch.style.margin = 'auto';
+                const votes_heat_color = document.createElement('div');
+                votes_heat_color.style.width = '20px';
+                votes_heat_color.style.height = '20px';
+                votes_heat_color.style.backgroundColor = color;
+                votes_heat_color.style.margin = 'auto';
 
-                legend_color.appendChild(swatch);
+                legend_color.appendChild(votes_heat_color);
 
-                const label = document.createElement('div');
-                label.style.width = '20px';
-                label.style.height = '20px';
-                label.style.fontSize = ' 15px';
-                label.style.color = 'white';
-                label.style.margin = 'auto'
-                label.style.textAlign = 'center'
-                label.textContent = number;
-                legend_num.appendChild(label);
+                const votes_num = document.createElement('div');
+                votes_num.style.width = '20px';
+                votes_num.style.height = '20px';
+                votes_num.style.fontSize = ' 15px';
+                votes_num.style.color = 'white';
+                votes_num.style.margin = 'auto'
+                votes_num.style.textAlign = 'center'
+                votes_num.textContent = number;
+                legend_num.appendChild(votes_num);
             });
 
             legend.appendChild(legend_color);
